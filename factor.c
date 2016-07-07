@@ -15,6 +15,7 @@ void callFunction(char choice, int num);
 void findFactors(int num);
 int findNumberOfFactors(int num);
 void highlyCompositeNumbers(int num);
+void findPrimes(int num);
 
 int main(int argc, char *argv[]){
     printTitle("Welcome to prime and composite factors.");
@@ -74,13 +75,13 @@ void callFunction(char choice, int num){
             break;
         case '4': highlyCompositeNumbers(num);
             break;
-        case '5':
+        case '5': findPrimes(num);
             break;
     }
 }
 
 void findFactors(int num){
-    printf("The factors are: ");
+    printf("The factors are: \n");
     int lineCounter = 0;
 
     for(int i = 1; i < num; i++){
@@ -88,8 +89,8 @@ void findFactors(int num){
             printf("%d, ", i);
             lineCounter++;
         }else if(num % i == 0){
-            lineCounter = 0;
             printf("\n%d, ", i);
+            lineCounter = 0;
         }
     }
     
@@ -111,13 +112,48 @@ int findNumberOfFactors(int num){
 void highlyCompositeNumbers(int num){
     int maxFactors = 0;
     int tempFactors = 0;
+    int lineCounter = 0;
+
+    printf("The highly composite numbers are: \n");
 
     for(int i = 1; i <= num; i++){
         tempFactors = findNumberOfFactors(i);
 
-        if(tempFactors > maxFactors){
-            printf("%d is a highly composite number.\n", i);
+        if(tempFactors > maxFactors && lineCounter < 5){
+            printf("%d, ", i);
             maxFactors = tempFactors;
-        }   
+            lineCounter++;
+        }else if(tempFactors > maxFactors){
+            printf("\n%d, ", i);
+            maxFactors = tempFactors;
+            lineCounter = 0;
+        }
     }
+
+    printf("\n\n");
+}
+
+void findPrimes(int num){
+    int prime = 0;
+    int lineCounter = 0;
+    printf("The prime numbers are: \n");
+
+    for(int test = 1; test <= num; test++){
+        prime = 1;
+        for(int factor = 2; factor < test; factor++){
+            if(test % factor == 0){
+                prime = 0;
+            }
+        }
+        
+        if(prime && lineCounter < 5){
+            printf("%d, ", test);
+            lineCounter++;
+        }else if(prime){
+            printf("\n%d, ", test);
+            lineCounter = 0;
+        }
+    }
+
+    printf("\n\n");
 }
