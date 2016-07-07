@@ -13,6 +13,8 @@ char menu(void);
 int getNumber(void);
 void callFunction(char choice, int num);
 void findFactors(int num);
+int findNumberOfFactors(int num);
+void highlyCompositeNumbers(int num);
 
 int main(int argc, char *argv[]){
     printTitle("Welcome to prime and composite factors.");
@@ -60,14 +62,17 @@ int getNumber(void){
 }
 
 void callFunction(char choice, int num){
+    int factorCount;
+
     switch(choice){
         case '1': findFactors(num);
             break;
         case '2':
             break;
-        case '3':
+        case '3': factorCount = findNumberOfFactors(num);
+                  printf("The number has %d factors.\n", factorCount);
             break;
-        case '4':
+        case '4': highlyCompositeNumbers(num);
             break;
         case '5':
             break;
@@ -89,4 +94,30 @@ void findFactors(int num){
     }
     
     printf("%d.\n\n", num);
+}
+
+int findNumberOfFactors(int num){
+    int factorCount = 0;
+
+    for(int i = 1; i <= num; i++){
+        if(num % i == 0){
+            factorCount++;
+        }
+    }
+
+    return factorCount;
+}
+
+void highlyCompositeNumbers(int num){
+    int maxFactors = 0;
+    int tempFactors = 0;
+
+    for(int i = 1; i <= num; i++){
+        tempFactors = findNumberOfFactors(i);
+
+        if(tempFactors > maxFactors){
+            printf("%d is a highly composite number.\n", i);
+            maxFactors = tempFactors;
+        }   
+    }
 }
