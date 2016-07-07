@@ -4,18 +4,7 @@
  *  Purpose: To calculate factors
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-void printTitle(char *title);
-char menu(void);
-int getNumber(void);
-void callFunction(char choice, int num);
-void findFactors(int num);
-int findNumberOfFactors(int num);
-void highlyCompositeNumbers(int num);
-void findPrimes(int num);
+#include "factor.h"
 
 int main(int argc, char *argv[]){
     printTitle("Welcome to prime and composite factors.");
