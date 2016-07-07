@@ -9,13 +9,15 @@
 #include <string.h>
 
 void printTitle(char *title);
-int menu(void);
+char menu(void);
+char getNumber(void);
 void callFunction(char choice);
 
 int main(int argc, char *argv[]){
     printTitle("Welcome to prime and composite factors.");
     
     char menuChoice = menu();
+    int number = getNumber();
     callFunction(menuChoice);
 
     return EXIT_SUCCESS;
@@ -28,7 +30,7 @@ void printTitle(char *title){
     printf("\n\n");
 }
 
-int menu(void){
+char menu(void){
     char choice;
 
     printTitle("Main Menu.");
@@ -45,6 +47,28 @@ int menu(void){
     return choice;
 }
 
+char getNumber(void){
+    int num;
+
+    do{
+        printf("\nWhat number would you like to use? ");
+        scanf("%d", &num);
+    }while(num < 1);
+
+   return num;
+}
+
 void callFunction(char choice){
-    printf("No functions coded yet.");
+    switch(choice){
+        case '1':
+            break;
+        case '2':
+            break;
+        case '3':
+            break;
+        case '4':
+            break;
+        case '5':
+            break;
+    }
 }
