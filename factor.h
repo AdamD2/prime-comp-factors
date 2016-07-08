@@ -19,6 +19,8 @@ void callFunction(char choice, int num);
 
 // Maths functions for finding factors
 void findFactors(int num);
+void productOfPrimeFactors(int num);
 int findNumberOfFactors(int num);
 void highlyCompositeNumbers(int num);
 void findPrimes(int num);
+int isPrime(int testNum);

@@ -57,7 +57,9 @@ void callFunction(char choice, int num){
     switch(choice){
         case '1': findFactors(num);
             break;
-        case '2':
+        case '2': printf("You can make the number using:\n");
+                  productOfPrimeFactors(num);
+                  printf("\n\n");
             break;
         case '3': factorCount = findNumberOfFactors(num);
                   printf("The number has %d factors.\n", factorCount);
@@ -84,6 +86,16 @@ void findFactors(int num){
     }
     
     printf("%d.\n\n", num);
+}
+
+void productOfPrimeFactors(int num){
+    for(int i = 2; i <= num; i++){
+        if(isPrime(i) && num % i == 0){
+            printf("%d ", i);
+            productOfPrimeFactors(num / i);
+            break;
+        }
+    }
 }
 
 int findNumberOfFactors(int num){
@@ -145,4 +157,16 @@ void findPrimes(int num){
     }
 
     printf("\n\n");
+}
+
+int isPrime(int testNum){
+    int prime = 1;
+
+    for(int factor = 2; factor < testNum; factor++){
+        if(testNum % factor == 0){
+            prime = 0;
+        }
+    }
+
+    return prime;
 }
